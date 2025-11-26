@@ -11,6 +11,7 @@ This site highlights my **projects, skills, experience, and journey** as a Compu
 ## 🖼️ **Screenshots**
 
 *(Add your screenshots here when deployed)*
+<img width="1905" height="972" alt="Home" src="https://github.com/user-attachments/assets/06d11468-866d-4988-b3fd-fda8d10782d6" />
 
 ---
 

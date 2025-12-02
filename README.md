@@ -10,10 +10,12 @@ This site highlights my **projects, skills, experience, and journey** as a Compu
 
 ## 🖼️ **Screenshots**
 
-*(Add your screenshots here when deployed)*
-<img width="1905" height="972" alt="Home" src="https://github.com/user-attachments/assets/06d11468-866d-4988-b3fd-fda8d10782d6" />
 
----
+<img width="1919" height="970" alt="Screenshot 2025-12-03 010157" src="https://github.com/user-attachments/assets/f6b25672-df7f-4017-aa1b-a70799722a84" />
+
+---<img width="1919" height="969" alt="Screenshot 2025-12-03 010225" src="https://github.com/user-attachments/assets/87a1b5e3-292c-4c00-9438-b945e77d7150" />
+
+<img width="1919" height="968" alt="Screenshot 2025-12-03 010235" src="https://github.com/user-attachments/assets/06b77a58-2951-40a4-9958-081a5d0abdd1" />
 
 ## 🚀 **Features**
 

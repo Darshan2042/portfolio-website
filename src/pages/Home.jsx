@@ -1,5 +1,7 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import AnimatedText from '../components/AnimatedText'
+import TypingText from '../components/TypingText'
 import "../CSS/Home.css"
 import '../index.css' 
 
@@ -15,6 +17,11 @@ const instagramLogo = '/insta.png'
 const facebookLogo = '/facebook.png'
 
 export default function Home() {
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, -50])
+  const y2 = useTransform(scrollY, [0, 300], [0, 50])
+  const opacity = useTransform(scrollY, [0, 200, 300], [1, 0.5, 0])
+
   const professions = [
     "Aspiring Software Engineer",
     "Passionate Programmer",
@@ -80,38 +87,114 @@ export default function Home() {
           className="home-info"
         >
           <h1 className="home-title">
-            Hi, I’m{' '}
-            <motion.span
-              animate={{ backgroundPositionX: ['0%', '200%'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-              className="home-name"
-            >
-              Darshan Pawar
-            </motion.span>
+            Hi, I'm{' '}
+            <span className="home-name-wrapper">
+              <motion.span
+                animate={{ backgroundPositionX: ['0%', '200%'] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                className="home-name"
+                style={{ display: 'inline-block' }}
+              >
+                Darshan Pawar
+              </motion.span>
+            </span>
           </h1>
 
           {/* Typing Animated Text */}
-          <p className="typing-effect">
-            Computer Engineer | Full-Stack Developer | Tech Explorer
-          </p>
+          <div className="typing-effect" style={{ minHeight: '30px' }}>
+            <TypingText 
+              texts={[
+                'Computer Engineer',
+                'Full-Stack Developer', 
+                'Tech Explorer',
+                'MERN Stack Developer'
+              ]}
+              typingSpeed={80}
+              deletingSpeed={50}
+              pauseTime={2000}
+            />
+          </div>
 
           {/* Profession Tags */}
-          <motion.div className="profession-tags">
+          <motion.div 
+            className="profession-tags"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.3
+                }
+              }
+            }}
+          >
             {professions.map((role, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.05, background: 'linear-gradient(90deg,var(--accent),var(--accent-2))' }} transition={{ type: 'spring', stiffness: 200 }} className="profession-tag">
+              <motion.div 
+                key={i} 
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.8 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: { type: 'spring', stiffness: 300, damping: 20 }
+                  }
+                }}
+                whileHover={{ 
+                  scale: 1.08, 
+                  background: 'linear-gradient(90deg,var(--accent),var(--accent-2))',
+                  boxShadow: '0 5px 15px rgba(0,255,255,0.3)'
+                }} 
+                transition={{ type: 'spring', stiffness: 400, damping: 15 }} 
+                className="profession-tag"
+              >
                 {role}
               </motion.div>
             ))}
           </motion.div>
 
           {/* Info Cards */}
-          <motion.div className="info-cards">
+          <motion.div 
+            className="info-cards"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.6
+                }
+              }
+            }}
+          >
             {[
               { label: '📍 Location', value: 'Dhule, Maharashtra, India' },
               { label: '💼 Expertise', value: 'Full-Stack Development' },
               { label: '📧 Contact', value: 'pawardarshan1204@gmail.com' },
             ].map((info, i) => (
-              <motion.div key={i} whileHover={{ y: -4, scale: 1.05 }} transition={{ type: 'spring', stiffness: 250 }} className="info-card">
+              <motion.div 
+                key={i} 
+                variants={{
+                  hidden: { opacity: 0, x: -30 },
+                  visible: { 
+                    opacity: 1, 
+                    x: 0,
+                    transition: { type: 'spring', stiffness: 200, damping: 20 }
+                  }
+                }}
+                whileHover={{ 
+                  y: -6, 
+                  scale: 1.05,
+                  boxShadow: '0 8px 20px rgba(0,255,255,0.2)'
+                }} 
+                transition={{ type: 'spring', stiffness: 300, damping: 15 }} 
+                className="info-card"
+              >
                 <strong>{info.label}</strong>
                 <p>{info.value}</p>
               </motion.div>
@@ -121,9 +204,35 @@ export default function Home() {
       </div>
 
       {/* Bottom Quick Links */}
-      <motion.div className="quick-links">
-        <h2 className="quick-links-title">Connect with me</h2>
-        <div className="quick-links-list">
+      <motion.div 
+        className="quick-links"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <motion.h2 
+          className="quick-links-title"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+        >
+          Connect with me
+        </motion.h2>
+        <motion.div 
+          className="quick-links-list"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 1.3
+              }
+            }
+          }}
+        >
           {quickLinks.map((item, i) => (
             <motion.a
               key={i}
@@ -131,18 +240,32 @@ export default function Home() {
               title={item.title}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.15, rotate: 5 }}
-              transition={{ type: 'spring', stiffness: 250 }}
+              variants={{
+                hidden: { opacity: 0, scale: 0, rotate: -180 },
+                visible: { 
+                  opacity: 1, 
+                  scale: 1, 
+                  rotate: 0,
+                  transition: { type: 'spring', stiffness: 260, damping: 20 }
+                }
+              }}
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: 8,
+                transition: { type: 'spring', stiffness: 400, damping: 10 }
+              }}
+              whileTap={{ scale: 0.95 }}
             >
               <motion.img
                 src={item.img}
                 alt={item.title}
-                whileHover={{ filter: 'drop-shadow(0 0 15px var(--accent)) brightness(1.2)' }}
+                whileHover={{ filter: 'drop-shadow(0 0 20px var(--accent)) brightness(1.3)' }}
+                transition={{ duration: 0.3 }}
                 className="quick-link-img"
               />
             </motion.a>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
 
     </section>

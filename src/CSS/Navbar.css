@@ -119,3 +119,66 @@
   height: 100vh; /* cover full screen */
   z-index: 1000; /* already done */
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.7rem 1.2rem;
+  }
+
+  .nav-left {
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-name h1 {
+    font-size: 13px;
+  }
+
+  .nav-tagline {
+    font-size: 11px;
+  }
+
+  .nav-links {
+    display: none; /* Hide desktop links on mobile */
+  }
+
+  .mobile-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-left {
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-name h1 {
+    font-size: 12px;
+  }
+
+  .nav-tagline {
+    font-size: 10px;
+  }
+
+  .mobile-btn button {
+    font-size: 1.6rem;
+  }
+
+  .mobile-dropdown a {
+    font-size: 13px;
+    padding: 0.7rem 0;
+  }
+}
+

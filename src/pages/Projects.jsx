@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
+import TiltCard from '../components/TiltCard'
 
 const PROJECTS = [
   {
@@ -58,44 +59,62 @@ export default function Projects() {
   return (
     <motion.section
       className="container"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       id="projects"
     >
       <div className="card" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 30 }}>
         <motion.h2
           className="text-4xl font-semibold text-cyan-400 mb-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
         >
           🚀 Projects
         </motion.h2>
-        <p className="text-gray-400 mb-10">
+        <motion.p 
+          className="text-gray-400 mb-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+        >
           A collection of my major works — blending research, AI innovation.
-        </p>
+        </motion.p>
 
         <div className="projects-grid" style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
           {PROJECTS.map((p, idx) => (
-            <motion.div
+            <TiltCard
               key={idx}
-              className="project-card"
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.4, delay: idx * 0.15 }}
-              whileHover={{ scale: 1.03 }}
-              viewport={{ once: true }}
               style={{
                 background: 'linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.9))',
                 border: '1px solid rgba(0,255,255,0.1)',
                 borderRadius: 16,
                 padding: 16,
-                overflow: 'hidden',
+                overflow: 'visible',
                 boxShadow: '0 0 20px rgba(0,255,255,0.08)'
               }}
             >
-              <motion.div className="ss" whileHover={{ scale: 1.05 }} style={{ borderRadius: 12, overflow: 'hidden' }}>
+              <motion.div
+                className="project-card"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: idx * 0.1,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <motion.div 
+                  className="ss" 
+                  whileHover={{ scale: 1.05 }} 
+                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                  style={{ borderRadius: 12, overflow: 'hidden' }}
+                >
                 <img
                   src={p.ss}
                   alt={p.title}
@@ -136,7 +155,12 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     className="btn"
-                    whileHover={{ scale: 1.08 }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 5px 15px rgba(14,165,233,0.3)'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -157,7 +181,12 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     className="btn"
-                    whileHover={{ scale: 1.08 }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 5px 20px rgba(6,182,212,0.5)'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -174,7 +203,8 @@ export default function Projects() {
                   </motion.a>
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </TiltCard>
           ))}
         </div>
       </div>

@@ -59,6 +59,22 @@
   border-radius: 12px;
   padding: 16px;
   color: var(--text-main);
+  border: 1px solid rgba(0,123,255,0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cert.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(0,123,255,0.5);
+  box-shadow: 0 0 35px rgba(0,123,255,0.3), 0 0 70px rgba(0,123,255,0.15);
+  background: rgba(26,26,26,0.95);
+}
+
+.cert.card:active {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 55px rgba(0,123,255,0.45), 0 0 90px rgba(0,123,255,0.25), inset 0 0 25px rgba(0,123,255,0.1);
+  border-color: rgba(0,123,255,0.7);
 }
 
 .cert.card img {
@@ -108,3 +124,114 @@
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(255,255,255,0.2);
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .certs-section {
+    padding: 30px 0;
+  }
+
+  .certs-card {
+    padding: 20px 16px;
+  }
+
+  .certs-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .certs-card .lead {
+    font-size: 0.95rem;
+  }
+
+  .certs-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .cert.card {
+    padding: 14px;
+  }
+
+  .cert.card img {
+    height: 140px;
+  }
+
+  .cert.card strong {
+    font-size: 15px;
+  }
+
+  .modal img {
+    max-width: 95%;
+    max-height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .certs-section {
+    padding: 25px 0;
+  }
+
+  .certs-card {
+    padding: 16px 12px;
+  }
+
+  .certs-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .certs-card .lead {
+    font-size: 0.9rem;
+  }
+
+  .certs-tabs {
+    gap: 6px;
+  }
+
+  .tab {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .cert.card {
+    padding: 12px;
+  }
+
+  .cert.card img {
+    height: 120px;
+  }
+
+  .cert.card strong {
+    font-size: 14px;
+  }
+
+  .cert.card .muted {
+    font-size: 12px;
+  }
+
+  .cert.card .btn {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  .modal img {
+    max-width: 98%;
+    max-height: 75%;
+  }
+}
+

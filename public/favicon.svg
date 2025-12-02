@@ -1,0 +1,42 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring gradient -->
+  <circle cx="32" cy="32" r="30" stroke="url(#gradient1)" stroke-width="2" fill="none"/>
+  
+  <!-- Inner ring gradient -->
+  <circle cx="32" cy="32" r="24" stroke="url(#gradient2)" stroke-width="2" fill="none"/>
+  
+  <!-- Hexagon background -->
+  <path d="M32 12 L46 20 L46 36 L32 44 L18 36 L18 20 Z" fill="url(#gradient3)"/>
+  
+  <!-- DP Text -->
+  <text x="32" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle">DP</text>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Glow effect -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#7c3aed" stroke-width="2" opacity="0.3" filter="url(#glow)"/>
+  
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

@@ -97,15 +97,36 @@ export default function Skills() {
       {/* Header */}
       <motion.div
         className="skills-header"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-5xl text-cyan-400 font-semibold mb-3">My Skills</h2>
-        <div className="w-28 h-[2px] bg-cyan-400 mx-auto mb-6"></div>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
+        <motion.h2 
+          className="text-5xl text-cyan-400 font-semibold mb-3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          My Skills
+        </motion.h2>
+        <motion.div 
+          className="w-28 h-[2px] bg-cyan-400 mx-auto mb-6"
+          initial={{ width: 0, opacity: 0 }}
+          whileInView={{ width: '7rem', opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+        ></motion.div>
+        <motion.p 
+          className="text-gray-400 text-lg max-w-xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
           ✨ Technical expertise blended with creativity — explore my core competencies below.
-        </p>
+        </motion.p>
       </motion.div>
 
       {/* Floating Orbs with page-load + hover highlight animation */}
@@ -191,18 +212,35 @@ export default function Skills() {
               <motion.div
                 key={col.title}
                 className="skill-box"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 10px 30px rgba(0,255,255,0.15)',
+                  y: -5
+                }}
                 transition={{
                   duration: 0.6,
-                  delay: (rowIndex + colIndex) * 0.1,
+                  delay: (rowIndex + colIndex) * 0.15,
+                  ease: "easeOut"
                 }}
               >
                 <h3>{col.title}</h3>
                 <ul>
                   {col.items.map((item, i) => (
-                    <motion.li key={i} whileHover={{ x: 6, color: "#00ffc8" }}>
+                    <motion.li 
+                      key={i} 
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 + i * 0.05 }}
+                      whileHover={{ 
+                        x: 10, 
+                        color: "#00ffc8",
+                        transition: { type: 'spring', stiffness: 300, damping: 20 }
+                      }}
+                    >
                       {item}
                     </motion.li>
                   ))}

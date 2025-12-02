@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedLogo from "./AnimatedLogo";
 
 const links = [
   { label: "Home", to: "/" },
@@ -52,27 +53,29 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <motion.div
-            className="logo"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.4rem",
-              color: "var(--accent)",
-            }}
-          >
-            DP
-          </motion.div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 style={{ margin: 0, fontSize: 14 }}>Darshan Pawar</h1>
-            <div style={{ fontSize: 12, color: "var(--muted)" }}>
-              Full-Stack Developer
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
+            <AnimatedLogo size={50} />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <motion.h1 
+                style={{ margin: 0, fontSize: 16, fontWeight: 700 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Darshan Pawar
+              </motion.h1>
+              <motion.div 
+                style={{ fontSize: 12, color: "var(--muted)" }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Full-Stack Developer
+              </motion.div>
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop links */}
         <div

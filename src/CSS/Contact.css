@@ -90,3 +90,84 @@
   color: #0ff;
   font-weight: 500;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    margin: 1rem 0 0.4rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .contact-links {
+    gap: 18px;
+    margin-bottom: 1.8rem;
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+
+  .contact-form {
+    max-width: 450px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 1.2rem 0.75rem 2.5rem;
+  }
+
+  .contact-title {
+    font-size: 1.75rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+    padding: 0 5px;
+  }
+
+  .contact-links {
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .contact-btn {
+    padding: 11px;
+    font-size: 0.95rem;
+  }
+}
+

@@ -3,7 +3,7 @@
 Welcome to my personal portfolio website built using **React.js**, **Framer Motion**, and a modern clean UI.  
 This site highlights my **projects, skills, experience, and journey** as a Computer Engineering student passionate about **AI, Machine Learning, Cloud Computing, and Full-Stack Development**.
 
-🌐 **Live Website:** *Coming Soon (Vercel)*  
+🌐 **Live Website:** *https://portfolio-website-delta-sand-29.vercel.app/*  
 📁 **Repository:** `portfolio-darshan`
 
 ---

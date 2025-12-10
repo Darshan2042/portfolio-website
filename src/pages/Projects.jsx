@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
-import TiltCard from '../components/TiltCard'
 
 const PROJECTS = [
   {
@@ -52,8 +51,7 @@ const PROJECTS = [
     live: '#',
     code: '#'
   },
-];
-
+]
 
 export default function Projects() {
   return (
@@ -87,28 +85,25 @@ export default function Projects() {
 
         <div className="projects-grid" style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
           {PROJECTS.map((p, idx) => (
-            <TiltCard
+            <motion.div
               key={idx}
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: idx * 0.1,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true, margin: "-50px" }}
               style={{
                 background: 'linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.9))',
                 border: '1px solid rgba(0,255,255,0.1)',
                 borderRadius: 16,
                 padding: 16,
-                overflow: 'visible',
                 boxShadow: '0 0 20px rgba(0,255,255,0.08)'
               }}
             >
-              <motion.div
-                className="project-card"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: idx * 0.1,
-                  ease: "easeOut"
-                }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
                 <motion.div 
                   className="ss" 
                   whileHover={{ scale: 1.05 }} 
@@ -150,17 +145,16 @@ export default function Projects() {
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
-                  <motion.a
-                    href={p.code}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn"
-                    whileHover={{ 
-                      scale: 1.1,
-                      boxShadow: '0 5px 15px rgba(14,165,233,0.3)'
+                  <a
+                    href={p.code !== '#' ? p.code : undefined}
+                    target={p.code !== '#' ? "_blank" : undefined}
+                    rel={p.code !== '#' ? "noopener noreferrer" : undefined}
+                    onClick={(e) => {
+                      if (p.code === '#') {
+                        e.preventDefault()
+                        return false
+                      }
                     }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -171,22 +165,34 @@ export default function Projects() {
                       borderRadius: 8,
                       fontSize: 13,
                       border: '1px solid rgba(0,255,255,0.1)',
-                      textDecoration: 'none'
+                      textDecoration: 'none',
+                      cursor: p.code === '#' ? 'not-allowed' : 'pointer',
+                      opacity: p.code === '#' ? 0.5 : 1,
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (p.code !== '#') {
+                        e.currentTarget.style.transform = 'scale(1.05)'
+                        e.currentTarget.style.boxShadow = '0 5px 15px rgba(14,165,233,0.3)'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)'
+                      e.currentTarget.style.boxShadow = 'none'
                     }}
                   >
                     <Github size={14} /> Code
-                  </motion.a>
-                  <motion.a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn"
-                    whileHover={{ 
-                      scale: 1.1,
-                      boxShadow: '0 5px 20px rgba(6,182,212,0.5)'
+                  </a>
+                  <a
+                    href={p.live !== '#' ? p.live : undefined}
+                    target={p.live !== '#' ? "_blank" : undefined}
+                    rel={p.live !== '#' ? "noopener noreferrer" : undefined}
+                    onClick={(e) => {
+                      if (p.live === '#') {
+                        e.preventDefault()
+                        return false
+                      }
                     }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -196,15 +202,27 @@ export default function Projects() {
                       padding: '6px 12px',
                       borderRadius: 8,
                       fontSize: 13,
-                      textDecoration: 'none'
+                      textDecoration: 'none',
+                      cursor: p.live === '#' ? 'not-allowed' : 'pointer',
+                      opacity: p.live === '#' ? 0.5 : 1,
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (p.live !== '#') {
+                        e.currentTarget.style.transform = 'scale(1.05)'
+                        e.currentTarget.style.boxShadow = '0 5px 20px rgba(6,182,212,0.5)'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)'
+                      e.currentTarget.style.boxShadow = 'none'
                     }}
                   >
                     <ExternalLink size={14} /> Live
-                  </motion.a>
+                  </a>
                 </div>
               </div>
-              </motion.div>
-            </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>

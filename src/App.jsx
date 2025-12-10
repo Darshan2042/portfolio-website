@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -13,6 +13,7 @@ import MouseTrail from './components/MouseTrail'
 import GlowingOrbs from './components/GlowingOrbs'
 import FloatingIcons from './components/FloatingIcons'
 import ClickRipple from './components/ClickRipple'
+import SinglePageLayout from './components/SinglePageLayout'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Gallery from './pages/Gallery'
@@ -26,6 +27,21 @@ import SkillNetwork from './pages/Skills'
 
 export default function App() {
   const location = useLocation()
+  const [layoutMode, setLayoutMode] = useState('single') // Default to single-page
+
+  // Load saved preference from localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem('layoutMode')
+    if (savedMode) {
+      setLayoutMode(savedMode)
+    }
+  }, [])
+
+  // Handle mode selection
+  const handleModeSelect = (mode) => {
+    setLayoutMode(mode)
+    localStorage.setItem('layoutMode', mode)
+  }
 
   return (
     <div className="app">
@@ -43,23 +59,29 @@ export default function App() {
       <MouseTrail />
       <BackToTop />
       
-      <Navbar />
+      <Navbar layoutMode={layoutMode} onModeChange={handleModeSelect} />
+      
       <main style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-            <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
-            {/* <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} /> */}
-            <Route path="/skills" element={<PageTransition><SkillNetwork /></PageTransition>} />
-            {/* <Route path="/certificates" element={<PageTransition><Certificates /></PageTransition>} /> */}
-            {/* <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} /> */}
-            <Route path="/resume" element={<PageTransition><Resume /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
-          </Routes>
-        </AnimatePresence>
+        {layoutMode === 'single' ? (
+          <SinglePageLayout />
+        ) : (
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+              {/* <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} /> */}
+              <Route path="/skills" element={<PageTransition><SkillNetwork /></PageTransition>} />
+              {/* <Route path="/certificates" element={<PageTransition><Certificates /></PageTransition>} /> */}
+              {/* <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} /> */}
+              <Route path="/resume" element={<PageTransition><Resume /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+            </Routes>
+          </AnimatePresence>
+        )}
       </main>
+      
       <footer className="footer">
         © {new Date().getFullYear()} Darshan Pawar — Built with React
       </footer>

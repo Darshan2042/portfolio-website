@@ -17,8 +17,8 @@ const PROJECTS = [
     desc: 'A Streamlit-based system for extracting cheque details from images/PDFs using Python and MongoDB, automating document processing and data validation.',
     ss: '/checkmate.png',
     tech: ['Python', 'Streamlit', 'MongoDB'],
-    live: '#',
-    code: '#'
+    live: 'https://checkmate-cheque-extractor.streamlit.app/',
+    code: 'https://github.com/Darshan2042/Checkmate'
   },
   {
     title: '🔆 Smart IoT-Based Solar Panel Cleaning System',

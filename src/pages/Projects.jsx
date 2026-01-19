@@ -40,8 +40,8 @@ const PROJECTS = [
     desc: 'A full-stack application that helps users log, categorize, and track daily expenses with secure user authentication and clean UI for financial insights.',
     ss: '/expensetrack.png',
     tech: ['React.js', 'Bootstrap', 'JavaScript', 'MongoDB'],
-    live: '#',
-    code: '#'
+    live: 'https://expense-manager-42.netlify.app/',
+    code: 'https://github.com/Darshan2042/personal-expense-manager'
   },
   {
     title: '📚 StudyMate – Interactive Learning App',

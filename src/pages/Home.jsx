@@ -7,8 +7,8 @@ import '../index.css'
 
 
 // 🖼️ Public Assets (served from `public/`) — use absolute paths
-// Fixed: Matches exact filename "Profile_Pic.png" in public folder (case-sensitive)
-const photo = '/Profile_Pic.png'
+// Fixed: Matches exact filename "Gemini_Profile_Pic.png" in public folder (case-sensitive)
+const photo = '/Gemini_Profile_Pic.png'
 const githubLogo = '/github.png'
 const linkedinLogo = '/linkedin.png'
 const gmailLogo = '/gmail.png'

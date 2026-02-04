@@ -32,7 +32,7 @@ export default function Home() {
 
   const quickLinks = [
     { img: githubLogo, title: 'GitHub', link: 'https://github.com/Darshan2042' },
-    { img: linkedinLogo, title: 'LinkedIn', link: 'https://www.linkedin.com/in/darshan-pawar-588554258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ' },
+    { img: linkedinLogo, title: 'LinkedIn', link: 'https://www.linkedin.com/in/darshan2042' },
     { img: gmailLogo, title: 'Email', link: 'mailto:pawardarshan1204@gmail.com' },
     { img: whatsappLogo, title: 'WhatsApp', link: 'https://wa.me/+919552312042' },
     { img: instagramLogo, title: 'Instagram', link: 'https://www.instagram.com/darshan.pawar_42/' },

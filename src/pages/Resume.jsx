@@ -200,7 +200,7 @@ Technology
           {[
             { name: "🏆 LeetCode", link: "https://leetcode.com/u/Darshan_1204/" },
             { name: "💻 GitHub", link: "https://github.com/Darshan2042" },
-            { name: "💼 LinkedIn", link: "https://www.linkedin.com/in/darshan-pawar-588554258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+            { name: "💼 LinkedIn", link: "https://www.linkedin.com/in/darshan2042" },
           ].map((site) => (
             <motion.a
               key={site.name}
@@ -233,7 +233,7 @@ Technology
           }}
         >
           <iframe
-            src="/Darshan Pawar .pdf"
+            src="/Darshan_Pawar_Software_Engineer.pdf"
             title="Darshan Pawar Resume"
             style={{
               width: "100%",
@@ -246,7 +246,7 @@ Technology
 
         {/* Download Button */}
         <motion.a
-          href="/Darshan Pawar .pdf"
+          href="/Darshan_Pawar_Software_Engineer.pdf"
           download
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

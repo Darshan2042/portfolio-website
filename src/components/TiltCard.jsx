@@ -12,6 +12,11 @@ export default function TiltCard({ children, className = '', style = {} }) {
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg'])
 
   const handleMouseMove = (e) => {
+    // Don't tilt when hovering over links
+    if (e.target.tagName === 'A' || e.target.closest('a')) {
+      return
+    }
+    
     const rect = e.currentTarget.getBoundingClientRect()
 
     const width = rect.width
@@ -40,11 +45,12 @@ export default function TiltCard({ children, className = '', style = {} }) {
         rotateY,
         rotateX,
         transformStyle: 'preserve-3d',
+        pointerEvents: 'auto',
         ...style
       }}
       className={className}
     >
-      <div style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}>
+      <div style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d', pointerEvents: 'auto' }}>
         {children}
       </div>
     </motion.div>
